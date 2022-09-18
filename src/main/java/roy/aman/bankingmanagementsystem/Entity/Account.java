@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 import roy.aman.bankingmanagementsystem.Entity.SupportEntity.AccountType;
 
 import javax.persistence.*;
@@ -23,11 +24,11 @@ public class Account {
             sequenceName="account_sequence",
             allocationSize=10
     )
-    private int accountNumber;
+    private Integer accountNumber;
 
     private Integer totalAmount;
 
-    private Date dateOfOpenaning;
+    private Date dateOfOpening;
 
     private AccountType accountType;
 
@@ -37,5 +38,10 @@ public class Account {
 
     @OneToMany
     private List<Transaction> allTrasactions;
+    @Column(name="account_Pass")
+    private String password;
+
+    @ColumnDefault("false")
+    private Boolean loginStatus;
 
 }
