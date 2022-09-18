@@ -1,6 +1,5 @@
 package roy.aman.bankingmanagementsystem.ServiceImplementation;
 
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 import roy.aman.bankingmanagementsystem.Entity.SupportEntity.LoginDTO;
 import roy.aman.bankingmanagementsystem.Entity.Transaction;

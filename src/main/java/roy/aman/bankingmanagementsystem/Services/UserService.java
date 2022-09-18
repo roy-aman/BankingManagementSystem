@@ -3,16 +3,15 @@ package roy.aman.bankingmanagementsystem.Services;
 import roy.aman.bankingmanagementsystem.Entity.Account;
 import roy.aman.bankingmanagementsystem.Entity.SupportEntity.AccountDTO;
 import roy.aman.bankingmanagementsystem.Entity.SupportEntity.UserDTO;
-import roy.aman.bankingmanagementsystem.Entity.User;
 
 import java.util.List;
 
 public interface UserService {
 
     UserDTO registerAsUser(UserDTO user);
-    Integer openAccount(AccountDTO accountDTO);
+    Account openAccount(AccountDTO accountDTO, Integer uid);
 
-    List<AccountDTO> getAllAccounts(Integer userId);
+    AccountDTO getActiveAccount(Integer userId);
 
     UserDTO updateDetails(UserDTO user, Integer userId);
 

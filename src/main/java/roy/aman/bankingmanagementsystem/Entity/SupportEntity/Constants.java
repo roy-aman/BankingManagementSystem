@@ -24,4 +24,11 @@ public class Constants {
             "Account information is invalid or transaction has been denied for your protection. Please try again.";
     public static final String CREATE_ACCOUNT_FAILED =
             "Error happened during creating new account";
+
+    public static final Integer CURRENT_ACCOUNT_OPENING_BALANCE = 100000;
+
+    public static final Integer SAVING_ACCOUNT_OPENING_BALANCE = 10000;
+
+    public static final Integer SAVING_ACCOUNT_Age_LIMIT = 18;
+
 }

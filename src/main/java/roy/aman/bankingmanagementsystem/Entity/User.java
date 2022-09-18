@@ -32,8 +32,8 @@ public class User {
     private String password;
 
     private String address;
-    @OneToMany(mappedBy = "user")
-    private List<Account> activeAccounts;
+    @OneToOne(mappedBy = "user")
+    private Account activeAccounts;
 
 
 }

@@ -11,12 +11,15 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
+@Inheritance(strategy = TABLE_PER_CLASS)
+public abstract class Account {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="account_seq")
     @SequenceGenerator(
@@ -32,7 +35,7 @@ public class Account {
 
     private AccountType accountType;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "account_holder_id")
     private User accountHolder;
 

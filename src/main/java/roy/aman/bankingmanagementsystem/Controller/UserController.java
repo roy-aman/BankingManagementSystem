@@ -31,9 +31,9 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @GetMapping("/{userId}/accounts")
-    public ResponseEntity<List<AccountDTO>> getUsersAccounts(@PathVariable Integer userId){
-        return ResponseEntity.ok(this.userService.getAllAccounts(userId));
+    @GetMapping("/{userId}/account")
+    public ResponseEntity<AccountDTO> getUsersAccounts(@PathVariable Integer userId){
+        return ResponseEntity.ok(this.userService.getActiveAccount(userId));
     }
 
 }

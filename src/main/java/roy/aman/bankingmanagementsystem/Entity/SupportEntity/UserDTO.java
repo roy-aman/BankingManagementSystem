@@ -1,11 +1,9 @@
 package roy.aman.bankingmanagementsystem.Entity.SupportEntity;
 
-import lombok.*;
-import roy.aman.bankingmanagementsystem.Entity.Address;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
