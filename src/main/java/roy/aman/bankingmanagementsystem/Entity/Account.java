@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.AccountType;
+import org.hibernate.annotations.GenericGenerator;
+import roy.aman.bankingmanagementsystem.SupportEntity.AccountType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,21 +22,27 @@ import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
 @Inheritance(strategy = TABLE_PER_CLASS)
 public abstract class Account {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="account_seq")
-    @SequenceGenerator(
-            name="account_seq",
-            sequenceName="account_sequence",
-            allocationSize=10
-    )
-    private Integer accountNumber;
+    @Column(name = "Account_Number")
+    @GenericGenerator(name = "acnt_num_gen",strategy = "AccountNumberGenerator")
+    @GeneratedValue(generator = "acnt_num_gen") //this is important to keep in mind + put absolute path in strategy
+    private String accountNumber;
 
-    private Integer totalAmount;
+
+//    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="account_seq")
+//    @SequenceGenerator(
+//            name="account_seq",
+//            sequenceName="account_sequence",
+//            allocationSize=10
+//    )
+//    private Long accountNumber;
+
+    private Long totalAmount;
 
     private Date dateOfOpening;
 
     private AccountType accountType;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "account_holder_id")
     private User accountHolder;
 

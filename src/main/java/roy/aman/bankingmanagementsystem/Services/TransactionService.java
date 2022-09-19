@@ -1,7 +1,7 @@
 package roy.aman.bankingmanagementsystem.Services;
 
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.AtmTransDTO;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.BankTransDTO;
+import roy.aman.bankingmanagementsystem.SupportEntity.AtmTransDTO;
+import roy.aman.bankingmanagementsystem.SupportEntity.BankTransDTO;
 
 public interface TransactionService  {
 

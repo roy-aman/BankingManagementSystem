@@ -5,4 +5,5 @@ import roy.aman.bankingmanagementsystem.Entity.User;
 
 public interface UserRepository extends JpaRepository <User, Integer>{
 
+
 }

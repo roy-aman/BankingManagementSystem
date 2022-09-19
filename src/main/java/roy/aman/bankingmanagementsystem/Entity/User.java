@@ -23,6 +23,8 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String fullName;
+    @Column(unique = true,nullable = false)
+    private String mobile;
 
 //    private String username;
 
@@ -32,8 +34,8 @@ public class User {
     private String password;
 
     private String address;
-    @OneToOne(mappedBy = "user")
-    private Account activeAccounts;
+    @OneToMany
+    private List<Account> activeAccounts;
 
 
 }

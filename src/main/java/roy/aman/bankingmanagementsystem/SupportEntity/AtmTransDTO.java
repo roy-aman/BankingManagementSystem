@@ -1,4 +1,4 @@
-package roy.aman.bankingmanagementsystem.Entity.SupportEntity;
+package roy.aman.bankingmanagementsystem.SupportEntity;
 
 public class AtmTransDTO {
     Integer atmNumber;

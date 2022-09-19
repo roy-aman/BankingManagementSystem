@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.TransactionType;
+import roy.aman.bankingmanagementsystem.SupportEntity.TransactionType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

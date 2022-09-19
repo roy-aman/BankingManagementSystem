@@ -1,8 +1,8 @@
 package roy.aman.bankingmanagementsystem.ServiceImplementation;
 
 import org.springframework.stereotype.Service;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.AtmTransDTO;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.BankTransDTO;
+import roy.aman.bankingmanagementsystem.SupportEntity.AtmTransDTO;
+import roy.aman.bankingmanagementsystem.SupportEntity.BankTransDTO;
 import roy.aman.bankingmanagementsystem.Services.TransactionService;
 
 @Service

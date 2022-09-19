@@ -1,4 +1,4 @@
-package roy.aman.bankingmanagementsystem.Entity.SupportEntity;
+package roy.aman.bankingmanagementsystem.SupportEntity;
 
 import roy.aman.bankingmanagementsystem.Entity.User;
 
@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class AccountDTO {
 
-    public Integer amount;
+    public Long amount;
 
     public Date dateOfOpening;
 

@@ -1,13 +1,13 @@
 package roy.aman.bankingmanagementsystem.ServiceImplementation;
 
+import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import roy.aman.bankingmanagementsystem.Entity.*;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.AccountDTO;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.Constants;
-import roy.aman.bankingmanagementsystem.Entity.SupportEntity.UserDTO;
-import roy.aman.bankingmanagementsystem.Exceptions.GlobalException;
+import roy.aman.bankingmanagementsystem.SupportEntity.AccountDTO;
+import roy.aman.bankingmanagementsystem.SupportEntity.Constants;
+import roy.aman.bankingmanagementsystem.SupportEntity.UserDTO;
 import roy.aman.bankingmanagementsystem.Exceptions.ResourceNotFoundException;
 import roy.aman.bankingmanagementsystem.Repository.AccountRepository;
 import roy.aman.bankingmanagementsystem.Repository.TransactionRepository;
@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -40,7 +41,7 @@ public class UserServiceImp implements UserService {
 
 
     @Override
-    public Account openAccount(AccountDTO accountDTO, Integer userID) {
+    public Account openAccount(@NotNull AccountDTO accountDTO, Integer userID) {
 
         Account account = null;
 
@@ -68,7 +69,7 @@ public class UserServiceImp implements UserService {
                throw new RuntimeException(Constants.CREATE_ACCOUNT_FAILED);
            }
            // a minimum age limit of 18 Years to open a Current account
-            User user = this.userRepository.findById(userID).orElseThrow( ()-> new ResourceNotFoundException("User","userId",userID));
+            User user = this.userRepository.findById(userID).orElseThrow( ()-> new ResourceNotFoundException("User","userId",userID+""));
 
                                                                            //()-> is important
           LocalDate today = LocalDate.now();
@@ -100,16 +101,21 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public AccountDTO getActiveAccount(Integer userId) {
-        User user = this.userRepository.findById(userId).orElseThrow( ()-> new ResourceNotFoundException("User","userId",userId));
+    public List<AccountDTO> getActiveAccounts(Integer userId) {
+        User user = this.userRepository.findById(userId).orElseThrow( ()-> new ResourceNotFoundException("User","userId",userId+""));
 
-       return this.modelMapper.map(user.getActiveAccounts(),AccountDTO.class) ;
+      List<Account> accounts = this.accountRepository.findByUser(user);
+
+     List<AccountDTO> accountDTOS =  accounts.stream().map((account) -> this.modelMapper.map(account,AccountDTO.class))
+                .collect(Collectors.toList());
+
+      return accountDTOS;
     }
 
     @Override
     public UserDTO updateDetails(UserDTO userDto, Integer userId) {
 
-        User user = this.userRepository.findById(userId).orElseThrow( ()-> new ResourceNotFoundException("User","userId",userId));
+        User user = this.userRepository.findById(userId).orElseThrow( ()-> new ResourceNotFoundException("User","userId",userId+""));
 
         user = userRepository.save(user);
         return this.modelMapper.map(user,UserDTO.class) ;

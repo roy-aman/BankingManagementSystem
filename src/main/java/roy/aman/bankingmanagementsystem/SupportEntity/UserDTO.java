@@ -1,9 +1,11 @@
-package roy.aman.bankingmanagementsystem.Entity.SupportEntity;
+package roy.aman.bankingmanagementsystem.SupportEntity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -24,6 +26,11 @@ public class UserDTO {
     @NotEmpty
     @Size(min = 3, max = 10, message = "Password must be min of 3 chars and max of 10 chars !!")
     private String password;
+
+    @NotEmpty
+    @Column(unique = true)
+    @Size(min=10,max = 10, message = "Number must be of 10 digits !!")
+    private String mobileNumber;
 
     @NotEmpty
     private Date dateOfBirth;
