@@ -36,7 +36,7 @@ public abstract class Account {
 //    )
 //    private Long accountNumber;
 
-    private Long totalAmount;
+    private Integer totalAmount;
 
     private Date dateOfOpening;
 

@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import roy.aman.bankingmanagementsystem.SupportEntity.TransactionType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -23,6 +20,10 @@ public class Transaction {
 
     private Integer amount;
     private TransactionType transactionType;
+
+    @ManyToOne
+    @JoinColumn(name = "account_Id")
+    private Account account;
 
 
 }

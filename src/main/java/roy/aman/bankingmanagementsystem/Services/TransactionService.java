@@ -1,15 +1,15 @@
 package roy.aman.bankingmanagementsystem.Services;
 
 import roy.aman.bankingmanagementsystem.SupportEntity.AtmTransDTO;
-import roy.aman.bankingmanagementsystem.SupportEntity.BankTransDTO;
+import roy.aman.bankingmanagementsystem.SupportEntity.TransactionDTO;
 
 public interface TransactionService  {
 
-    Integer withdrawThroughBank(BankTransDTO bankTransDTO);
+    Integer withdrawThroughBank(TransactionDTO TransDTO);
 
-    Integer withdrawThroughATM(AtmTransDTO bankTransDTO);
+    Integer withdrawThroughATM(AtmTransDTO TransDTO);
 
-    Integer transferMoney(BankTransDTO bankTransDTO);
+    Integer transferMoney(TransactionDTO TransDTO);
 
-    Integer depositMoney(Integer amount);
+    Integer depositMoney(TransactionDTO transDTO);
 }
